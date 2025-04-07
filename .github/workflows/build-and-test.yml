@@ -1,22 +1,23 @@
 # Workflow to trigger build and deploy java project with maven
 
-name: Java 22 build and deploy POC 
+name: Java 21 build and deploy POC 
 on: [workflow_dispatch, push]
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
       - name: checkout repository 
-      - uses: actions/checkout@v4
-
-      - name: install jdk 
-      - run: echo "Installing java..."
-      - uses: actions/setup-java@v4    
+        uses: actions/checkout@v4
+      - name: checkout repository 
+        run: |
+          echo "✅ Checked out branch: ${{ github.ref_name }}"         
+      - name: install jdk         
+        uses: actions/setup-java@v4    
         with: 
           distribution: 'oracle'
           java-version: '21'
       - name: build and package with maven 
-      - run: |
+        run: |
           echo "building the project...."
           mvn clean install
           echo "Build and test completed successfully"
