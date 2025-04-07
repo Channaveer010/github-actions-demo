@@ -1,6 +1,6 @@
 # Workflow to trigger build and deploy java project with maven
 
-name: Java 21 build and deploy POC 
+name: java-21-build-and-test 
 on: [workflow_dispatch, push]
 jobs:
   build-and-test:
